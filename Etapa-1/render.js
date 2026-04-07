@@ -45,9 +45,9 @@ export function renderError(mensaje, lado) {
 
 // Mientras se espera la respuesta de la api, se muestra un mensaje de cargando
 
-export function renderLoading(lado) {
+/*export function renderLoading(lado) {
     document.querySelector("#" + lado + "-nombre").textContent = "Cargando...";
-    document.querySelector("#" + lado + "-imagen").src =  " ";
+    document.querySelector("#" + lado + "-imagen").src = " ";
     document.querySelector("#" + lado + "-tipos").textContent = "?";
     document.querySelector("#" + lado + "-hp").textContent = "❤️?";
     document.querySelector("#" + lado + "-ataque").textContent = "⚔️?";
@@ -55,4 +55,43 @@ export function renderLoading(lado) {
     document.querySelector("#" + lado + "-velocidad").textContent = "⚡?";
     document.querySelector("#" + lado + "-movimientos").textContent = "❓";
 }
+*/
+// Prueba para skeleton loading, se muestra un esqueleto mientras se espera la respuesta de la api, en vez de un mensaje de cargando.
+export function renderLoading(lado) {
+ // Imagen — skeleton cuadrado
+  document.querySelector("#" + lado + "-imagen").src = "";
+  document.querySelector("#" + lado + "-imagen").style.display = "none";
 
+  // Nombre
+  document.querySelector("#" + lado + "-nombre").innerHTML =
+    '<span class="skeleton sk-nombre"></span>';
+
+  // Tipos
+  document.querySelector("#" + lado + "-tipos").innerHTML =
+    '<span class="skeleton sk-tipo"></span>';
+
+  // Stats
+  document.querySelector("#" + lado + "-hp").innerHTML =
+    '<span class="skeleton sk-stat"></span>';
+  document.querySelector("#" + lado + "-ataque").innerHTML =
+    '<span class="skeleton sk-stat"></span>';
+  document.querySelector("#" + lado + "-defensa").innerHTML =
+    '<span class="skeleton sk-stat"></span>';
+  document.querySelector("#" + lado + "-velocidad").innerHTML =
+    '<span class="skeleton sk-stat"></span>';
+
+  // Movimientos
+  document.querySelector("#" + lado + "-movimientos").innerHTML =
+    '<span class="skeleton sk-ataques"></span>';
+
+  // Skeleton para la imagen
+  var imgContainer = document.querySelector("#" + lado + "-imagen").parentElement;
+  var skImg = document.querySelector("#" + lado + "-sk-imagen");
+  if (!skImg) {
+    skImg = document.createElement("span");
+    skImg.id = lado + "-sk-imagen";
+    skImg.className = "skeleton sk-imagen";
+    imgContainer.insertBefore(skImg, document.querySelector("#" + lado + "-imagen"));
+  }
+  skImg.style.display = "block";
+}
