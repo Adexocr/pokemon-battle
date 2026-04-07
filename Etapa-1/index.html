@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon Battle - Etapa 1</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Pokémon Battle </h1>
+
+        <!-- Datos de trainer desde trainer.config -->
+        <div id="trainer-card">
+            <p id="trainer-nombre"></p>
+            <p id="trainer-hometown"></p>
+            <p id="trainer-catchphrase"></p>
+        </div>
+    </header>
+    <main>
+        
+        <!-- lado del jugador -->
+        <section id="seccion-jugador">
+            <h2>Tu Pokémon</h2>
+            <img id="jugador-imagen" src="" alt="Imagen del Pokémon del jugador">
+            <p id="jugador-nombre"> Cargando...</p>
+            <p id="jugador-tipos"> Cargando...</p>
+            <div id="jugador-stats">
+                <p id="jugador-hp"> HP: ?</p>
+                <p id="jugador-ataque">Ataque: ?</p> 
+                <p id="jugador-defensa">Defensa: ?</p>
+                <p id="jugador-velocidad">Velocidad: ?</p>
+
+            </div>
+            <p class="titulo-ataques"> ⚔️ Ataques </p>
+            <p id="jugador-movimientos"> CARGANDO... </p>
+            </section>
+
+
+            <div id="vs">
+                <h2>VS</h2>
+            </div>
+
+        <!-- lado del oponente -->
+        <section id="seccion-oponente">
+            <h2>Pokémon Oponente</h2>
+            <img id="oponente-imagen" src="" alt="Imagen del Pokémon oponente">
+            <p id="oponente-nombre"> Cargando...</p>
+            <p id="oponente-tipos">?</p>
+            <div id="oponente-stats">
+                <p id="oponente-hp"> HP: ?</p>
+                <p id="oponente-ataque">Ataque: ?</p> 
+                <p id="oponente-defensa">Defensa: ?</p>
+                <p id="oponente-velocidad">Velocidad: ?</p>
+
+            </div>
+            <p class="titulo-ataques"> ⚔️ Ataques </p>
+            <p id="oponente-movimientos"> CARGANDO... </p>
+
+            <!--Buscador de oponentes-->
+            <div id="buscador">
+                <input type="text" id="input-oponente" placeholder="Busca un Pokémon:">
+                <p id="buscador-status"></p>
+            </div>
+        </section>
+    </main>
+
+    <!--Boton para iniciar batalla-->
+    <div id="footer-battle">
+        <button id="btn-batalla" disabled> Iniciar Batalla ⚔️ </button>
+    </div>
+
+    <!-- se importan los scripts en orden -->
+    <!--type module para usar import/export a la vez-->
+
+    <script type="module" src="main.js"></script>
+</body>
+</html>

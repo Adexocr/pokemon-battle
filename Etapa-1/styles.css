@@ -1,0 +1,240 @@
+/* ── COLORES DE UMBREON ──────── */
+/* Negro profundo, dorado de los anillos, azul noche y detalles en rojo */
+/*Mucho de este codigo fue inspirado en el diseño de los juegos de Pokémon
+Ademas quise probar algunas cosas que no se vieron en clase pero que siempr ees bueno saber.  */
+
+/* ── COLORES DE UMBREON ───────────────────────────── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0d0d0d;
+  color: #f0e68c;
+  font-family: monospace;
+  padding: 2rem;
+}
+
+/* ── HEADER ───────────────────────────────────────── */
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #f5c842;
+  padding-bottom: 1rem;
+}
+
+/* Brillo sutil en el título */
+h1 {
+  font-size: 2rem;
+  color: #f5c842;
+  margin-bottom: 0.5rem;
+  animation: brillar 3s ease-in-out infinite;
+}
+
+@keyframes brillar {
+  0%,100% { text-shadow: 0 0 10px rgba(245,200,66,0.3); }
+  50%      { text-shadow: 0 0 25px rgba(245,200,66,0.9); }
+}
+
+/* Emojis como títulos en el trainer card */
+#trainer-nombre::before     { content: "🧢  "; }
+#trainer-hometown::before   { content: "📍  "; }
+#trainer-catchphrase::before { content: "💬  "; }
+
+#trainer-card p {
+  color: #888;
+  font-size: 1rem;
+}
+
+/* ── LAYOUT PRINCIPAL ─────────────────────────────── */
+main {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* ── TARJETAS ─────────────────────────────────────── */
+#seccion-jugador,
+#seccion-oponente {
+  background-color: #1a1a2e;
+  border: 12px double #f5c842;
+  padding: 2rem;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 12px;
+  animation: brillarTarjeta 3s ease-in-out infinite;
+}
+
+@keyframes brillarTarjeta {
+  0%,100% { 
+    box-shadow: 0 0 8px rgba(245,200,66,0.15);
+  }
+  50% { 
+    box-shadow: 0 0 18px rgba(245,200,66,0.4),
+                0 0 35px rgba(245,200,66,0.15);
+  }
+}
+h2 {
+  color: #f5c842;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ── SPRITES ──────────────────────────────────────── */
+img {
+  width: 150px;
+  height: 150px;
+  image-rendering: pixelated;
+}
+
+/* ── STATS ────────────────────────────────────────── */
+#jugador-stats,
+#oponente-stats {
+  width: 100%;
+  border-top: 3px solid #2a2a4a;
+  padding-top: 0.5rem;
+  font-size: 1rem;
+  color: #9d0606;
+}
+
+/* ── MOVIMIENTOS ──────────────────────────────────── */
+#jugador-movimientos,
+#oponente-movimientos {
+  font-size: 1rem;
+  color: #666;
+  text-align: center;
+  min-height: 40px;
+  width: 100%;
+}
+
+/* ── VS ───────────────────────────────────────────── */
+#vs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#vs h2 {
+  font-size: 3rem;
+  color: #e84040;
+  text-shadow: 0 0 10px rgba(232,64,64,0.5);
+  animation: brillarRojo 3s ease-in-out infinite;
+}
+
+@keyframes brillarRojo {
+  0%,100% { 
+    text-shadow: 0 0 10px rgba(232,64,64,0.3); 
+  }
+  50% { 
+    text-shadow: 0 0 20px rgba(232,64,64,0.9),
+                 0 0 40px rgba(232,64,64,0.6),
+                 0 0 80px rgba(232,64,64,0.3);
+  }
+}
+
+/* ── BUSCADOR ─────────────────────────────────────── */
+#buscador {
+  width: 100%;
+  padding-top: 0.5rem;
+  margin-top: auto;
+  border-top: 3px solid #2a2a4a;
+
+}
+
+#input-oponente {
+  width: 100%;
+  background-color: #0d0d0d;
+  border: 1px solid #f5c842;
+  color: #f5c842;
+  padding: 0.4rem 0.8rem;
+  border-radius: 12px;
+  font-family: monospace;
+  font-size: 1rem;
+  outline: none;
+}
+
+#input-oponente:focus {
+  box-shadow: 0 0 8px #f5c842;
+}
+
+/* ── BOTÓN BATALLA ────────────────────────────────── */
+#footer-battle {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+#btn-batalla {
+  background-color: #1a1a2e;
+  border: 4px double #f5c842;
+  color: #f5c842;
+  padding: 1rem 2rem;
+  font-family: monospace;
+  font-size: 1rem;
+  cursor: pointer;
+  letter-spacing: 0.1em;
+  border-radius: 12px;
+  transition: all 0.3s;
+  /* Ingreso para hacer el efecto en boton de batalla */
+  position: relative; /*Necesario para el after */
+  overflow: hidden;  /* Corta luz cuando sale del boton */
+}
+/* Profesor aca quise probar esto en CSS. Se que no es relevante ni tan necesario para el proyecto
+pero me parecio divertido darle un toque mas "mágico" al botón de batalla.*/
+
+/* La luz que recorre el botón */
+#btn-batalla::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;          /* ← empieza fuera del botón por la izquierda */
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(244, 201, 72, 0.38),
+    transparent
+  );
+  animation: none;      /* ← deshabilitada cuando el botón está disabled */
+}
+
+/* Solo se activa cuando el botón está habilitado */
+#btn-batalla:not(:disabled)::after {
+  animation: luzRecorre 3s ease-in-out infinite;
+}
+
+@keyframes luzRecorre {
+  0%   { left: -100%; }
+  100% { left: 150%;  }  /* ← sale por la derecha */
+}
+#btn-batalla:disabled {
+  border-color: #333;
+  color: #333;
+  cursor: not-allowed;
+}
+
+
+#btn-batalla:hover:not(:disabled) {
+  background-color: #f5c842;
+  color: #0d0d0d;
+  box-shadow: 0 0 15px rgba(245,200,66,0.4);
+}
+
+/* ── DETALLES FINALES ───────────────────────────────── */
+
+.titulo-ataques {
+  font-size: 1rem;
+  color: #f5c842;
+  letter-spacing: 0.05em;
+  border-top: 3px solid #2a2a4a;
+  padding-top: 0.5rem;
+  width: 100%;
+  text-align: center;
+}
