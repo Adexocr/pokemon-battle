@@ -7,6 +7,11 @@
 
 export function renderPokemon(datos, lado) {
 
+    // Se quita el skeleton de la imagen y se muestra la real
+  var skImg = document.querySelector("#" + lado + "-sk-imagen");
+  if (skImg) skImg.style.display = "none";
+  document.querySelector("#" + lado + "-imagen").style.display = "block";
+
     //seleccionamos el contenedor del pokemon
     document.querySelector("#" + lado + "-nombre").textContent = datos.nombre;
 
