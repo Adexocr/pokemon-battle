@@ -1,3 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Pokémon Battle - La Batalla</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+    <header>
+        <h1> Batalla ⚔️ </h1>
+    </header>
+
+    <main>
+        <!-- Lado oponente-->
+         <section id=""seccion-oponente">
+        <p id="oponente-nombre"></p>
+        <img id="oponente-imagen" src="" alt="Imagen del Pokémon oponente"> 
+
+        <!-- Barra de HP del oponente -->
+        <div class="hp-container">
+            <span>❤️</span>
+            <div class="hp-track">
+                <div class="hp-fill" id="oponente-hp-fill"></div>
+            </div>
+            <span id="oponente-hp-texto"></span>
+            </div>
+        </section>
+
+        <!-- Arena centro -->
+         <section id="arena">
+            
+            <!--Fila del oponente-->
+            <div class="arena fila" id="fila-oponente">
+                <div class="arena-celda" id="oponente-celda-2"></div>
+            </div>
+
+            <!--Fila del jugador-->
+            <div class="arena fila" id="fila-jugador">
+                <div class="arena-celda" id="jugador-celda-1"></div>
+                <div class="arena-celda" id="jugador-celda-2"></div>
+                <div class="arena-celda" id="jugador-celda-3"></div>
+            </div>
+
+        </section>
+
+        <!-- Lado jugador abajo-->
+        <section id="seccion-jugador">
+            
+        <!-- Barra de HP del jugador -->
+         <div class="hp-container">
+            <span>❤️</span>
+            <div class="hp-track">
+                <div class="hp-fill" id="jugador-hp-fill"></div>
+            </div>
+            <span id="jugador-hp-texto"></span>
+            </div>
+
+         <img id="jugador-imagen" src="" alt="Imagen del Pokémon jugador">
+         <p id="jugador-nombre"></p>
+
+         <!-- Botones de ataque -->
+            <div id="botones-ataque">
+                <button id="btn-ataque" disabled>⚔️ Atacar</button>
+                <div class="cooldown-bar">
+                    <div class="cooldown-fill" id="cooldown-fill"></div>
+                </div>
+            <button id="btn-definitivo"> 🌙 Moonlight Requiem</button>
+            </div>
+
+        </section>
+
+        <!-- ── LOG DE BATALLA ── -->
+        <section id="log-batalla">
+          <p id="log-titulo">📜 Log de batalla</p>
+          <div id="log-contenido"></div>
+        </section>
+
+    </main>
+
+    <!-- Pantalla de fin de batalla -->
+    <div id="pantalla-fin" class="oculto">
+       <h2 id="mensaje-fin"></h2>
+       <button id="btn-reiniciar">🔄 Batalla de nuevo</button>
+    </div>
+
+    <script type="module" src="main.js"></script>
+
+</body>
+</html>
