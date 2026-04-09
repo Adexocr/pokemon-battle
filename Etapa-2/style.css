@@ -251,8 +251,9 @@ main {
 }
 
 @keyframes brillarBoton {
-  0%,100% { box-shadow: 0 0 5px rgba(245,200,66,0.1); }
-  50%      { box-shadow: 0 0 12px rgba(245,200,66,0.35); }
+  0%,100% { box-shadow: 0 0 8px rgba(245,200,66,0.2); }
+  50%      { box-shadow: 0 0 20px rgba(245,200,66,0.6),
+                         0 0 35px rgba(245,200,66,0.2); }
 }
 
 /* Quitamos el ::after completamente */
@@ -268,6 +269,8 @@ main {
   border-color: #333;
   color: #333;
   cursor: not-allowed;
+  animation: none; /* ← detiene el brillo cuando está deshabilitado */
+  box-shadow: none;
 }
 
 /* ── MOONLIGHT REQUIEM ────────────────────────────── */
