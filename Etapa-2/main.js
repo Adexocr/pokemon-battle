@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Se inicia batalla con render y checkEnd para que battle.js no toque el DOM
 
     iniciarBatalla(render, function(estado) {
-        checkBattleEnd(estado, render;
+        checkBattleEnd(estado, render);
     });
     
 // Teclado, se registra el listener una sola vez
@@ -38,7 +38,7 @@ function onKeyDown(e) {
 
     // Si esta bloqueado ignoramos el movimiento
 
-    if (estado.locked) return;}
+    if (estado.locked) return;
 
      if (e.key === 'ArrowLeft' && estado.jugadorPosicion > 1) {
       estado.jugadorPosicion--;

@@ -24,7 +24,7 @@ export var estado = {
 
 // Timer para guardar referencia
 
-var attackTimeout; null;
+var attackTimeout = null;
 
 // Calculos de HP
 // Se hace asi redondeado hacia abajo
@@ -44,7 +44,7 @@ function calcularDañojugador(movepower) {
 
 function calcularDañoOponente(attackStat) {
     return Math.floor(attackStat * 0.4) + Math.floor(Math.random() * 20);
-
+}
 // Esperar por milisegundos
 //funcion aux para hacer pausar con await
 
@@ -53,6 +53,7 @@ function wait(ms) {
         setTimeout(resolve, ms);
     });
     }
+
 
 // Inicio de la batalla, carga los datos desde localStorage y prepara el estado
 export function iniciarBatalla(renderFunc, checkEndFunc) {
@@ -163,7 +164,7 @@ export function jugadorAtaca(renderFunc, checkEndFunc, startCooldownFunc) {
 
     // Se usa el primer movimiento y poder
     var movePower = 60;
-    var daño = calcularDañoJugador(movePower);
+    var daño = calcularDañojugador(movePower);
 
     estado.oponenteHP = Math.max(0, estado.oponenteHP - daño);
     agregarLog('¡Has atacado al enemigo! Daño infligido: ' + daño);

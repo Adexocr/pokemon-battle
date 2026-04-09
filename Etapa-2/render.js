@@ -14,7 +14,6 @@ estado.jugadorHP + ' / ' + estado.jugadorHPMax;
 // Color de la barra segun el HP restante
 
 if (jugadorPct > 50) {
-    if (jugadorPct > 50) {
     document.querySelector('#jugador-hp-fill').style.background = '#42c97a'; // verde
   } else if (jugadorPct > 25) {
     document.querySelector('#jugador-hp-fill').style.background = '#f5c842'; // amarillo
@@ -36,7 +35,7 @@ var oponentePct = (estado.oponenteHP / estado.oponenteHPMax) * 100;
   } else {
     document.querySelector('#oponente-hp-fill').style.background = '#e84040';
   }
-}
+
 
 // La arena
 //Se limpia todas las celdas del jugador primero
@@ -51,7 +50,7 @@ var oponentePct = (estado.oponenteHP / estado.oponenteHPMax) * 100;
       celdaJugador.classList.add('celda-jugador');
     }
 
-    // Marcamos la celda del ataque entrante
+    // Marcar la celda del ataque entrante
     if (i === estado.incomingAttack) {
       celdaJugador.classList.add('celda-peligro');
     }
@@ -96,7 +95,6 @@ var oponentePct = (estado.oponenteHP / estado.oponenteHPMax) * 100;
 
     pantallaFin.classList.remove('oculto');
   }
-}
 
 // Render inicial
 export function renderInicial(estado) {
