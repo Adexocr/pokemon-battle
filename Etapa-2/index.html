@@ -64,12 +64,19 @@
          <p id="jugador-nombre"></p>
 
          <!-- Botones de ataque -->
-            <div id="botones-ataque">
-                <button id="btn-ataque" disabled>⚔️ Atacar</button>
-                <div class="cooldown-bar">
-                    <div class="cooldown-fill" id="cooldown-fill"></div>
-                </div>
-            <button id="btn-definitivo"> 🌙 Moonlight Requiem</button>
+        <div id="botones-ataque">
+
+        <!-- Los 4 movimientos se generan dinámicamente -->
+            <div id="movimientos-container"></div>
+
+        <!-- Cooldown bar -->
+             <div class="cooldown-bar">
+             <div class="cooldown-fill" id="cooldown-fill"></div>
+        </div>
+
+        <!-- Definitivo aparte -->
+            <button id="btn-definitivo">🌙 Moonlight Requiem</button>
+
             </div>
 
         </section>
