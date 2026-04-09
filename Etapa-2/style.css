@@ -1,1 +1,245 @@
-style
+/* ── RESET ────────────────────────────────────────── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0d0d0d;
+  color: #f0e68c;
+  font-family: monospace;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* ── HEADER ───────────────────────────────────────── */
+header {
+  text-align: center;
+  border-bottom: 1px solid #f5c842;
+  padding-bottom: 1rem;
+  width: 100%;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #f5c842;
+  animation: brillar 3s ease-in-out infinite;
+}
+
+@keyframes brillar {
+  0%,100% { text-shadow: 0 0 10px rgba(245,200,66,0.3); }
+  50%      { text-shadow: 0 0 25px rgba(245,200,66,0.9); }
+}
+
+/* ── SECCIONES JUGADOR Y OPONENTE ─────────────────── */
+#seccion-jugador,
+#seccion-oponente {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+#seccion-oponente img,
+#seccion-jugador img {
+  width: 120px;
+  height: 120px;
+  image-rendering: pixelated;
+}
+
+/* Oponente de frente, jugador de espaldas */
+#seccion-jugador img {
+  transform: scaleX(-1); /* espejo horizontal */
+}
+
+/* ── BARRAS DE HP ─────────────────────────────────── */
+.hp-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 300px;
+}
+
+.hp-track {
+  flex: 1;
+  height: 12px;
+  background: #1a1a2e;
+  border: 1px solid #2a2a4a;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.hp-fill {
+  height: 100%;
+  border-radius: 6px;
+  background: #42c97a;
+  transition: width 0.3s ease, background 0.3s ease;
+}
+
+/* ── ARENA ────────────────────────────────────────── */
+#arena {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.arena-fila {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.arena-celda {
+  width: 80px;
+  height: 60px;
+  border: 1px solid #2a2a4a;
+  background: #1a1a2e;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  transition: all 0.2s;
+}
+
+/* Celda donde está el jugador */
+.celda-jugador {
+  border-color: #f5c842;
+  background: rgba(245,200,66,0.1);
+}
+
+/* Celda del ataque entrante */
+.celda-peligro {
+  border-color: #e84040;
+  background: rgba(232,64,64,0.2);
+  animation: peligro 0.3s ease-in-out infinite;
+}
+
+@keyframes peligro {
+  0%,100% { background: rgba(232,64,64,0.2); }
+  50%      { background: rgba(232,64,64,0.4); }
+}
+
+/* ── BOTONES DE ATAQUE ────────────────────────────── */
+#botones-ataque {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+#btn-ataque,
+#btn-definitivo {
+  background-color: #1a1a2e;
+  border: 2px solid #f5c842;
+  color: #f5c842;
+  padding: 0.6rem 1.5rem;
+  font-family: monospace;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.3s;
+  width: 220px;
+}
+
+#btn-ataque:hover:not(:disabled),
+#btn-definitivo:hover:not(:disabled) {
+  background-color: #f5c842;
+  color: #0d0d0d;
+}
+
+#btn-ataque:disabled,
+#btn-definitivo:disabled {
+  border-color: #333;
+  color: #333;
+  cursor: not-allowed;
+}
+
+/* ── COOLDOWN BAR ─────────────────────────────────── */
+.cooldown-bar {
+  width: 220px;
+  height: 6px;
+  background: #1a1a2e;
+  border: 1px solid #2a2a4a;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.cooldown-fill {
+  height: 100%;
+  width: 0%;
+  background: #f5c842;
+  border-radius: 3px;
+  transition: none; /* requestAnimationFrame maneja la animación */
+}
+
+/* ── LOG DE BATALLA ───────────────────────────────── */
+#log-batalla {
+  background: #1a1a2e;
+  border: 1px solid #2a2a4a;
+  border-radius: 8px;
+  padding: 1rem;
+  width: 340px;
+  max-height: 160px;
+  overflow-y: auto;
+}
+
+#log-titulo {
+  color: #f5c842;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid #2a2a4a;
+  padding-bottom: 0.3rem;
+}
+
+#log-contenido p {
+  font-size: 0.78rem;
+  color: #888;
+  padding: 0.2rem 0;
+  border-bottom: 1px solid #1a1a2e;
+}
+
+/* ── PANTALLA DE FIN ──────────────────────────────── */
+#pantalla-fin {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+#pantalla-fin h2 {
+  font-size: 2rem;
+  color: #f5c842;
+  animation: brillar 2s ease-in-out infinite;
+}
+
+#btn-reiniciar {
+  background-color: #1a1a2e;
+  border: 2px solid #f5c842;
+  color: #f5c842;
+  padding: 0.8rem 2rem;
+  font-family: monospace;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+
+#btn-reiniciar:hover {
+  background-color: #f5c842;
+  color: #0d0d0d;
+}
+
+/* ── OCULTO ───────────────────────────────────────── */
+.oculto {
+  display: none !important;
+}
