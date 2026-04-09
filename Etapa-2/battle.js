@@ -227,4 +227,3 @@ export function limpiarTimers() {
     clearTimeout(attackTimeout);
 }
 
-}
