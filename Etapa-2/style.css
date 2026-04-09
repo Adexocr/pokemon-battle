@@ -247,34 +247,17 @@ main {
   border-radius: 8px;
   transition: all 0.3s;
   width: 100%;
-  position: relative;
-  overflow: hidden;
+  animation: brillarBoton 4s ease-in-out infinite;
 }
 
-/* Luz que recorre el botón */
-.btn-movimiento::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(245,200,66,0.2),
-    transparent
-  );
+@keyframes brillarBoton {
+  0%,100% { box-shadow: 0 0 5px rgba(245,200,66,0.1); }
+  50%      { box-shadow: 0 0 12px rgba(245,200,66,0.35); }
 }
 
-.btn-movimiento:not(:disabled)::after {
-  animation: luzRecorre 2.5s ease-in-out infinite;
-}
+/* Quitamos el ::after completamente */
+.btn-movimiento::after { display: none; }
 
-@keyframes luzRecorre {
-  0%   { left: -100%; }
-  100% { left: 150%;  }
-}
 
 .btn-movimiento:hover:not(:disabled) {
   background-color: #f5c842;
