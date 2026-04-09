@@ -229,6 +229,13 @@ main {
 }
 
 /* ── BOTONES MOVIMIENTO ───────────────────────────── */
+#movimientos-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  width: 300px;
+}
+
 .btn-movimiento {
   background-color: #1a1a2e;
   border: 2px solid #f5c842;
@@ -239,7 +246,34 @@ main {
   cursor: pointer;
   border-radius: 8px;
   transition: all 0.3s;
-  width: 220px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Luz que recorre el botón */
+.btn-movimiento::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(245,200,66,0.2),
+    transparent
+  );
+}
+
+.btn-movimiento:not(:disabled)::after {
+  animation: luzRecorre 2.5s ease-in-out infinite;
+}
+
+@keyframes luzRecorre {
+  0%   { left: -100%; }
+  100% { left: 150%;  }
 }
 
 .btn-movimiento:hover:not(:disabled) {
@@ -311,4 +345,26 @@ main {
 #btn-definitivo:hover:not(:disabled) {
   background-color: #a566e8;
   color: #0d0d0d;
+}
+
+/* Animación cuando el jugador ataca */
+@keyframes golpearDerecha {
+  0%   { transform: scaleX(-1) translateX(0);    }
+  50%  { transform: scaleX(-1) translateX(20px); }
+  100% { transform: scaleX(-1) translateX(0);    }
+}
+
+/* Animación cuando el oponente recibe daño */
+@keyframes recibirGolpe {
+  0%,100% { transform: translateX(0);    opacity: 1;   }
+  25%      { transform: translateX(-8px); opacity: 0.6; }
+  75%      { transform: translateX(8px);  opacity: 0.6; }
+}
+
+.jugador-atacando {
+  animation: golpearDerecha 0.3s ease-in-out;
+}
+
+.oponente-golpeado {
+  animation: recibirGolpe 0.4s ease-in-out;
 }
