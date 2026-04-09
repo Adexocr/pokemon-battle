@@ -4,6 +4,11 @@
 
 export function render(estado) {
 
+  var btnMovimientos = document.querySelectorAll('.btn-movimiento');
+btnMovimientos.forEach(function(btn) {
+  btn.disabled = estado.attackOnCooldown || estado.phase === 'ended';
+});
+
     //HP Jugador
 var jugadorPct = (estado.jugadorHP / estado.jugadorHPMax) * 100;
 document.querySelector("#jugador-hp-fill").style.width = jugadorPct + '%';
@@ -105,6 +110,19 @@ export function renderInicial(estado) {
     //Oponente
     document.querySelector('#oponente-nombre').textContent = estado.oponente.nombre;
   document.querySelector('#oponente-imagen').src = estado.oponente.imagen;
+
+  // los botones de movimiento. 
+  var container = document.querySelector('#movimientos-container');
+  container.innerHTML = '';
+
+  estado.jugador.movimientos.forEach(function(movimiento, index) {
+    var btn = document.createElement('button');
+    btn.textContent = '⚔️ ' + movimiento;
+    btn.className = 'btn-movimiento';
+    btn.id = 'btn-movimiento-' + index;
+    btn.disabled = true; // empieza deshabilitado
+    container.appendChild(btn);
+  });
 }
 
 //Cooldown con animacion suave

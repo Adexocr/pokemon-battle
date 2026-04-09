@@ -195,7 +195,7 @@ main {
   border-radius: 8px;
   padding: 1rem;
   width: 340px;
-  max-height: 160px;
+  max-height: 200px;
   overflow-y: auto;
 }
 
@@ -252,4 +252,89 @@ main {
 /* ── OCULTO ───────────────────────────────────────── */
 .oculto {
   display: none !important;
+}
+
+/* ── BOTONES MOVIMIENTO ───────────────────────────── */
+.btn-movimiento {
+  background-color: #1a1a2e;
+  border: 2px solid #f5c842;
+  color: #f5c842;
+  padding: 0.6rem 1.5rem;
+  font-family: monospace;
+  font-size: 0.85rem;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.3s;
+  width: 220px;
+}
+
+.btn-movimiento:hover:not(:disabled) {
+  background-color: #f5c842;
+  color: #0d0d0d;
+}
+
+.btn-movimiento:disabled {
+  border-color: #333;
+  color: #333;
+  cursor: not-allowed;
+}
+
+/* ── MOONLIGHT REQUIEM ────────────────────────────── */
+#btn-definitivo {
+  background-color: #1a1a2e;
+  border: 4px double #a566e8;  /* morado como los anillos de Umbreon de noche */
+  color: #a566e8;
+  padding: 0.6rem 1.5rem;
+  font-family: monospace;
+  font-size: 0.85rem;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.3s;
+  width: 220px;
+  position: relative;
+  overflow: hidden;
+  animation: brillarMorado 3s ease-in-out infinite;
+}
+
+@keyframes brillarMorado {
+  0%,100% { box-shadow: 0 0 8px rgba(165,102,232,0.2); }
+  50%      { box-shadow: 0 0 20px rgba(165,102,232,0.6),
+                         0 0 40px rgba(165,102,232,0.2); }
+}
+
+/* Luz que recorre el botón igual que en Etapa 1 */
+#btn-definitivo::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(165,102,232,0.3),
+    transparent
+  );
+}
+
+#btn-definitivo:not(:disabled)::after {
+  animation: luzMorada 2s ease-in-out infinite;
+}
+
+@keyframes luzMorada {
+  0%   { left: -100%; }
+  100% { left: 150%;  }
+}
+
+#btn-definitivo:disabled {
+  border-color: #333;
+  color: #333;
+  cursor: not-allowed;
+  animation: none;
+}
+
+#btn-definitivo:hover:not(:disabled) {
+  background-color: #a566e8;
+  color: #0d0d0d;
 }

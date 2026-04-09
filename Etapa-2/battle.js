@@ -158,7 +158,7 @@ async function resolverAtaqueEnemigo(renderFunc, checkEndFunc) {
 }
 
 // Ataque del jugador 
-export function jugadorAtaca(renderFunc, checkEndFunc, startCooldownFunc) {
+export function jugadorAtaca(renderFunc, checkEndFunc, startCooldownFunc, index) {
     if (estado.attackOnCooldown) return; //si el ataque está en cooldown no se puede usar
     if (estado.phase !== 'fighting') return; //si la batalla terminó no se puede atacar
 
@@ -167,7 +167,10 @@ export function jugadorAtaca(renderFunc, checkEndFunc, startCooldownFunc) {
     var daño = calcularDañojugador(movePower);
 
     estado.oponenteHP = Math.max(0, estado.oponenteHP - daño);
-    agregarLog('¡Has atacado al enemigo! Daño infligido: ' + daño);
+
+    //Variable que muestra el movimiento. 
+    var nombreMovimiento = estado.jugador.movimientos[index] || 'ataque';
+    agregarLog('⚔️ ¡Usaste ' + nombreMovimiento + '! Daño: ' + daño);
 
     // Se verifica si la batalla terminó
     checkEndFunc(estado);

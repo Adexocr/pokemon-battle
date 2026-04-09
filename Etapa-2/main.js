@@ -20,7 +20,7 @@ import TRAINER  from '../trainer.config.js';
 
 // Cuando el DOM esté listo, iniciamos la batalla
 document.addEventListener('DOMContentLoaded', function() {
-    
+
         // Se inicia batalla con render y checkEnd para que battle.js no toque el DOM
 
     iniciarBatalla(render, function(estado) {
@@ -55,12 +55,19 @@ function onKeyDown(e) {
 
   document.addEventListener('keydown', onKeyDown);
 
-   // BOTÓN ATACAR 
-  document.querySelector('#btn-ataque').addEventListener('click', function() {
-    jugadorAtaca(render, function(estado) {
-      checkBattleEnd(estado, render);
-    }, startCooldown);
-  });
+// Listener para cada botón de movimiento
+document.querySelector('#movimientos-container').addEventListener('click', function(e) {
+  if (!e.target.classList.contains('btn-movimiento')) return;
+
+  // Obtener el índice del movimiento clickeado
+  var index = Array.from(
+    document.querySelectorAll('.btn-movimiento')
+  ).indexOf(e.target);
+
+  jugadorAtaca(render, function(estado) {
+    checkBattleEnd(estado, render);
+  }, startCooldown, index);
+});
 
   // ── BOTÓN DEFINITIVO 
   document.querySelector('#btn-definitivo').addEventListener('click', function() {
