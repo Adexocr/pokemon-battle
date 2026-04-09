@@ -17,8 +17,6 @@ import {
     animarAtaque
 } from './render.js';
 
-import TRAINER  from '../trainer.config.js';
-
 // Cuando el DOM esté listo, iniciamos la batalla
 document.addEventListener('DOMContentLoaded', function() {
 

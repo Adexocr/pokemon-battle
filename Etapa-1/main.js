@@ -127,7 +127,7 @@ document.querySelector("#btn-batalla").addEventListener("click", function() {
     localStorage.setItem("oponente", JSON.stringify(estado.oponente));
 
     // Redirigimos a la pagina de batalla
-    window.location.href ="../etapa-2/index.html";
+    window.location.href ="../Etapa-2/index.html";
 });
     //prerellenar ultimo oponente
 
