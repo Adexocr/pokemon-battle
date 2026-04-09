@@ -146,10 +146,10 @@ main {
 
 /* ── COOLDOWN BAR ─────────────────────────────────── */
 .cooldown-bar {
-  width: 220px;
+  width: 300px;
   height: 6px;
   background: #1a1a2e;
-  border: 1px solid #2a2a4a;
+  border: 1px solid #581414;
   border-radius: 3px;
   overflow: hidden;
 }
@@ -165,11 +165,11 @@ main {
 /* ── LOG DE BATALLA ───────────────────────────────── */
 #log-batalla {
   background: #1a1a2e;
-  border: 1px solid #2a2a4a;
+  border: 1px solid #581414;
   border-radius: 8px;
   padding: 1rem;
-  width: 340px;
-  max-height: 200px;
+  width: 380px;
+  max-height: 400px;
   overflow-y: auto;
 }
 
@@ -232,13 +232,13 @@ main {
 #movimientos-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.5rem;
+  gap: 1rem;
   width: 300px;
 }
 
 .btn-movimiento {
   background-color: #1a1a2e;
-  border: 2px solid #f5c842;
+  border: 2px double #f5c842;
   color: #f5c842;
   padding: 0.6rem 1.5rem;
   font-family: monospace;
@@ -247,7 +247,7 @@ main {
   border-radius: 8px;
   transition: all 0.3s;
   width: 100%;
-  animation: brillarBoton 4s ease-in-out infinite;
+  animation: brillarBoton 3s ease-in-out infinite;
 }
 
 @keyframes brillarBoton {
@@ -280,11 +280,11 @@ main {
   color: #a566e8;
   padding: 0.6rem 1.5rem;
   font-family: monospace;
-  font-size: 0.85rem;
+  font-size: 1rem;
   cursor: pointer;
   border-radius: 8px;
   transition: all 0.3s;
-  width: 220px;
+  width: 300px;
   position: relative;
   overflow: hidden;
   animation: brillarMorado 3s ease-in-out infinite;
@@ -313,7 +313,7 @@ main {
 }
 
 #btn-definitivo:not(:disabled)::after {
-  animation: luzMorada 2s ease-in-out infinite;
+  animation: luzMorada 3s ease-in-out infinite;
 }
 
 @keyframes luzMorada {
@@ -343,8 +343,8 @@ main {
 /* Animación cuando el oponente recibe daño */
 @keyframes recibirGolpe {
   0%,100% { transform: translateX(0);    opacity: 1;   }
-  25%      { transform: translateX(-8px); opacity: 0.6; }
-  75%      { transform: translateX(8px);  opacity: 0.6; }
+  25%      { transform: translateX(-8px); opacity: 0.5; }
+  75%      { transform: translateX(8px);  opacity: 0.5; }
 }
 
 .jugador-atacando {
@@ -357,8 +357,8 @@ main {
 
 @keyframes recibirGolpeJugador {
   0%,100% { transform: scaleX(-1) translateX(0);     opacity: 1;   }
-  25%      { transform: scaleX(-1) translateX(-8px);  opacity: 0.6; }
-  75%      { transform: scaleX(-1) translateX(8px);   opacity: 0.6; }
+  25%      { transform: scaleX(-1) translateX(-8px);  opacity: 0.5; }
+  75%      { transform: scaleX(-1) translateX(8px);   opacity: 0.5; }
 }
 .jugador-golpeado {
   animation: recibirGolpeJugador 0.4s ease-in-out;
