@@ -380,3 +380,23 @@ main {
   animation: recibirGolpeJugador 0.4s ease-in-out;
 }
 
+#btn-volver {
+  position: fixed;
+  left: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #f5c842;
+  text-decoration: none;
+  font-family: monospace;
+  font-size: 1rem;
+  border: 1px solid #f5c842;
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  transition: all 0.3s;
+  letter-spacing: 0.1em;
+}
+
+#btn-volver:hover {
+  background-color: #f5c842;
+  color: #0d0d0d;
+}
