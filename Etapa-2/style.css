@@ -354,3 +354,13 @@ main {
 .oponente-golpeado {
   animation: recibirGolpe 0.4s ease-in-out;
 }
+
+@keyframes recibirGolpeJugador {
+  0%,100% { transform: scaleX(-1) translateX(0);     opacity: 1;   }
+  25%      { transform: scaleX(-1) translateX(-8px);  opacity: 0.6; }
+  75%      { transform: scaleX(-1) translateX(8px);   opacity: 0.6; }
+}
+.jugador-golpeado {
+  animation: recibirGolpeJugador 0.4s ease-in-out;
+}
+

@@ -144,3 +144,16 @@ export function startCooldown(duracionMs, onComplete) {
 
   requestAnimationFrame(tick);
 }
+
+export function animarAtaque() {
+  var imgJugador  = document.querySelector('#jugador-imagen');
+  var imgOponente = document.querySelector('#oponente-imagen');
+
+  imgJugador.classList.add('jugador-atacando');
+  imgOponente.classList.add('oponente-golpeado');
+
+  setTimeout(function() {
+    imgJugador.classList.remove('jugador-atacando');
+    imgOponente.classList.remove('oponente-golpeado');
+  }, 400);
+}

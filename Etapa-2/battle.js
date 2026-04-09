@@ -153,7 +153,7 @@ async function resolverAtaqueEnemigo(renderFunc, checkEndFunc) {
   setTimeout(function() {
     imgJugador.classList.remove('oponente-golpeado');
   }, 400);
-  
+
     //Se limpia el ataque entrante
     estado.incomingAttack = null;
     estado.locked = false;
@@ -192,18 +192,6 @@ export function jugadorAtaca(renderFunc, checkEndFunc, startCooldownFunc, index)
     });
 }
 
-// Animación de ataque
-var imgJugador  = document.querySelector('#jugador-imagen');
-var imgOponente = document.querySelector('#oponente-imagen');
-
-imgJugador.classList.add('jugador-atacando');
-imgOponente.classList.add('oponente-golpeado');
-
-// Removemos las clases después de la animación
-setTimeout(function() {
-  imgJugador.classList.remove('jugador-atacando');
-  imgOponente.classList.remove('oponente-golpeado');
-}, 400);
 
 // Movimiento definitivo
 export function jugadorDefinitivo(renderFunc, checkEndFunc) {

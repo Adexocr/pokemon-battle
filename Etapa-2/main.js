@@ -13,7 +13,8 @@ import {
 import { 
     render,
     renderInicial,
-    startCooldown
+    startCooldown,
+    animarAtaque
 } from './render.js';
 
 import TRAINER  from '../trainer.config.js';
@@ -63,6 +64,8 @@ document.querySelector('#movimientos-container').addEventListener('click', funct
   var index = Array.from(
     document.querySelectorAll('.btn-movimiento')
   ).indexOf(e.target);
+
+  animarAtaque();
 
   jugadorAtaca(render, function(estado) {
     checkBattleEnd(estado, render);
