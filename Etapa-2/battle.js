@@ -140,7 +140,7 @@ async function resolverAtaqueEnemigo(renderFunc, checkEndFunc) {
 
     //Se resuelve el ataque y daño
     if (estado.jugadorPosicion === celdaObjetivo) {
-        var daño = calcularDañojugador(estado.oponente.ataque);
+        var daño = calcularDañoOponente(estado.oponente.ataque);
         estado.jugadorHP = Math.max(0, estado.jugadorHP - daño);
         agregarLog('¡Has sido golpeado por el ataque enemigo! Daño recibido: ' + daño);
     } else {

@@ -143,32 +143,6 @@ main {
   margin-top: 0.5rem;
 }
 
-#btn-ataque,
-#btn-definitivo {
-  background-color: #1a1a2e;
-  border: 2px solid #f5c842;
-  color: #f5c842;
-  padding: 0.6rem 1.5rem;
-  font-family: monospace;
-  font-size: 0.9rem;
-  cursor: pointer;
-  border-radius: 8px;
-  transition: all 0.3s;
-  width: 220px;
-}
-
-#btn-ataque:hover:not(:disabled),
-#btn-definitivo:hover:not(:disabled) {
-  background-color: #f5c842;
-  color: #0d0d0d;
-}
-
-#btn-ataque:disabled,
-#btn-definitivo:disabled {
-  border-color: #333;
-  color: #333;
-  cursor: not-allowed;
-}
 
 /* ── COOLDOWN BAR ─────────────────────────────────── */
 .cooldown-bar {

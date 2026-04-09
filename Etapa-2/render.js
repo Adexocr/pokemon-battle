@@ -60,12 +60,9 @@ var oponentePct = (estado.oponenteHP / estado.oponenteHPMax) * 100;
   }
 
   //Botones
-  var btnAtaque = document.querySelector('#btn-ataque');
   var btnDefinitivo = document.querySelector('#btn-definitivo');
 
-  // El botón de ataque se deshabilita durante el cooldown
-  // o cuando la batalla terminó
-  btnAtaque.disabled = estado.attackOnCooldown || estado.phase === 'ended';
+  
 
   // El definitivo se deshabilita después de usarlo una vez
   btnDefinitivo.disabled = estado.definitiveUsed || estado.phase === 'ended';
