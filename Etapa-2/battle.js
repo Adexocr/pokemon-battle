@@ -95,7 +95,7 @@ export function iniciarBatalla(renderFunc, checkEndFunc) {
 }
 
 // Loop del enemigo. Usa setTimeout recursivo. Cada ataque se
-    programa al finalizar el anterior, con un tiempo aleatorio
+//programa al finalizar el anterior, con un tiempo aleatorio
 
 export function scheduleNextAttack(renderFunc, checkEndFunc) {
 
@@ -226,3 +226,4 @@ export function limpiarTimers() {
     clearTimeout(attackTimeout);
 }
 
+}
