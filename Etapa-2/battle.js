@@ -185,6 +185,7 @@ export function jugadorAtaca(renderFunc, checkEndFunc, startCooldownFunc, index)
 
     // Se activa el cooldown del ataque
     estado.attackOnCooldown = true;
+    renderFunc(estado);
     var cooldownMs = (2 + Math.random() *2) * 1000; //entre 2 y 4 segundos
     startCooldownFunc(cooldownMs, function() {
         estado.attackOnCooldown = false;

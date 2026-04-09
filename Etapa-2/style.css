@@ -45,6 +45,22 @@ main {
   width: 100%;
 }
 
+#btn-volver {
+  color: #f5c842;
+  text-decoration: none;
+  font-family: monospace;
+  font-size: 0.85rem;
+  border: 1px solid #f5c842;
+  padding: 0.3rem 0.8rem;
+  border-radius: 6px;
+  transition: all 0.3s;
+}
+
+#btn-volver:hover {
+  background-color: #f5c842;
+  color: #0d0d0d;
+}
+
 /* ── SECCIONES JUGADOR Y OPONENTE ─────────────────── */
 #seccion-jugador,
 #seccion-oponente {
@@ -56,8 +72,8 @@ main {
 
 #seccion-oponente img,
 #seccion-jugador img {
-  width: 120px;
-  height: 120px;
+  width: 220px;
+  height: 220px;
   image-rendering: pixelated;
 }
 
