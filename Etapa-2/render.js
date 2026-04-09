@@ -8,8 +8,7 @@ export function render(estado) {
 var jugadorPct = (estado.jugadorHP / estado.jugadorHPMax) * 100;
 document.querySelector("#jugador-hp-fill").style.width = jugadorPct + '%';
 document.querySelector("#jugador-hp-texto").textContent = 
-
-estado.jugadorHP + ' / ' + estado.jugadorHPMax;
+    estado.jugadorHP + ' / ' + estado.jugadorHPMax;
 
 // Color de la barra segun el HP restante
 
@@ -20,7 +19,6 @@ if (jugadorPct > 50) {
   } else {
     document.querySelector('#jugador-hp-fill').style.background = '#e84040'; // rojo
   }
-}
 
 //HP Oponente
 var oponentePct = (estado.oponenteHP / estado.oponenteHPMax) * 100;
@@ -95,6 +93,7 @@ var oponentePct = (estado.oponenteHP / estado.oponenteHPMax) * 100;
 
     pantallaFin.classList.remove('oculto');
   }
+}
 
 // Render inicial
 export function renderInicial(estado) {
