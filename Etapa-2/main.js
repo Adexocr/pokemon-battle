@@ -20,14 +20,16 @@ import TRAINER  from '../trainer.config.js';
 
 // Cuando el DOM esté listo, iniciamos la batalla
 document.addEventListener('DOMContentLoaded', function() {
-
-    renderInicial();
-
-    // Se inicia batalla con render y checkEnd para que battle.js no toque el DOM
+    
+        // Se inicia batalla con render y checkEnd para que battle.js no toque el DOM
 
     iniciarBatalla(render, function(estado) {
         checkBattleEnd(estado, render);
     });
+
+    renderInicial(estado);
+
+
     
 // Teclado, se registra el listener una sola vez
 

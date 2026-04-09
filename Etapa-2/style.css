@@ -33,6 +33,16 @@ h1 {
 @keyframes brillar {
   0%,100% { text-shadow: 0 0 10px rgba(245,200,66,0.3); }
   50%      { text-shadow: 0 0 25px rgba(245,200,66,0.9); }
+
+}
+
+/* LAYOUT PRINCIPAL ───────────────────────────────────────── */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
 }
 
 /* ── SECCIONES JUGADOR Y OPONENTE ─────────────────── */
