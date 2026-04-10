@@ -105,7 +105,16 @@ var buscarDebounced = debounce(function() {
 }, 400);
 
 //Escuchamos cuando el usuario escribe
-inputOponente.addEventListener("input", buscarDebounced);
+inputOponente.addEventListener("input", function() {
+
+    if (inputOponente.value.trim() === "") {
+        clearTimeout(timeout); //cancela timer pendiente
+        estado.oponente = null; //limpia oponente
+        renderLoading("oponente"); //
+        verificarBoton(); //desactiva boton
+        return;
+    }
+});
 
 //Verificar el boton
 function verificarBoton() {
