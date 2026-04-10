@@ -9,7 +9,7 @@ export async function getPokemonData(nombre) {
 
 
     //fetch a la api, devuelve un objeto con toda la info del pokemon
-    var respuesta = await fetch(BASE_URL + nombre);
+    var respuesta = await fetch(BASE_URL + nombre, { signal: signal });
 
     // Si el pokemo no existe se devuelve error
 
@@ -24,6 +24,7 @@ export async function getPokemonData(nombre) {
     return {
         nombre: datos.name,
         imagen: datos.sprites.front_default,
+        imagenEspalda: datos.sprites.back_default,
         tipos: datos.types.map(function(t) { return t.type.name; }),
         hp: datos.stats[0].base_stat,
         ataque: datos.stats[1].base_stat,
@@ -31,4 +32,5 @@ export async function getPokemonData(nombre) {
         velocidad: datos.stats[5].base_stat,
         movimientos: datos.moves.slice(0, 4).map(function(m) { return m.move.name; })
     };
+
 }

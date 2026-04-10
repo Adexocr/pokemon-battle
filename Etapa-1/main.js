@@ -57,37 +57,43 @@ async function buscarOponente(nombre) {
         verificarBoton(); //desactivamos el boton mientras buscamos
         return; //salimos de la funcion
 }
-    renderLoading("oponente");
+
+        // Se crea un nuevo controlador para la peticion actual
+        controladorActual = new AbortController();
+        var signal = controladorActual.signal;
+
+        renderLoading("oponente");
 
     try {
-        // Buscamos los datos del pokemon oponente en la API
+        // Busca los datos del pokemon oponente en la API
         var datos = await getPokemonData(nombre);
 
-        // Guardamos los datos en el estado
+        // Guarda los datos en el estado
         estado.oponente = datos;
 
-        // Mostramos los datos en pantalla
+        // Muestra los datos en pantalla
         renderPokemon(datos, "oponente");
 
         //se guarda el nombre en el LOCALSTORAGE para que se pueda usar en la proxima etapa
 
         localStorage.setItem("ultimo-oponente", nombre);
 
-        //Revisamos si el boton se puede activar
+        //Revisa si el boton se puede activar
         verificarBoton();
 
     } catch (error) {
-        // Si hay un error, lo mostramos en pantalla
-        estado.oponente = null; //limpiamos el oponente
+        // Si hay un error, lo mostra en pantalla
+        estado.oponente = null; //limpia el oponente
         renderError(error.message, "oponente");
         verificarBoton();
     }
 }
 
 //DEBOUNCE 
-//Vamos a usarlo en 400 ms antes de llamar buscarOponente
+//Va a usarlo en 400 ms antes de llamar buscarOponente
 
 var timeout;
+var controladorActual = null;
 
 function debounce(func, wait) {
     return function() {
@@ -107,6 +113,12 @@ var buscarDebounced = debounce(function() {
 //Escuchamos cuando el usuario escribe
 inputOponente.addEventListener("input", function() {
 
+    //Si hay una peticion en vuelo la cancelamos
+    if (controladorActual) {
+        controladorActual.abort();
+        controladorActual = null;
+    }
+
     if (inputOponente.value.trim() === "") {
         clearTimeout(timeout); //cancela timer pendiente
         estado.oponente = null; //limpia oponente
@@ -114,6 +126,7 @@ inputOponente.addEventListener("input", function() {
         verificarBoton(); //desactiva boton
         return;
     }
+    buscarDebounced(); //llama a la funcion con debounce
 });
 
 //Verificar el boton
