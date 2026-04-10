@@ -97,5 +97,5 @@ document.querySelector('#movimientos-container').addEventListener('click', funct
       checkBattleEnd(estado, render);
     });
   });
-
+renderInicial(estado);
 });
