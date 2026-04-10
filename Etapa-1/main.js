@@ -39,7 +39,8 @@ async function cargarJugador() {
         verificarBoton();
 
     } catch (error) {
-        // Si hay un error, lo mostramos en pantalla
+        if (error.name === 'AbortError') return; // Si la petición fue abortada, no hacemos nada
+        // Si hay un error, lo muestra en pantalla
         renderError(error.message, "jugador");
 
     }
@@ -52,21 +53,19 @@ async function buscarOponente(nombre) {
 
     //si el input esta vacio, no hacemos nada
     if (nombre.trim() === "") {
-        estado.oponente = null; //limpiamos el oponente anterior
-        renderLoading("oponente"); //mostramos cargando mientras buscamos
-        verificarBoton(); //desactivamos el boton mientras buscamos
-        return; //salimos de la funcion
+        estado.oponente = null; //limpia el oponente anterior
+        renderLoading("oponente"); //muestra cargando mientras buscamos
+        verificarBoton(); //desactiva el boton mientras buscamos
+        return; //sale de la funcion
 }
 
         // Se crea un nuevo controlador para la peticion actual
         controladorActual = new AbortController();
-        var signal = controladorActual.signal;
-
         renderLoading("oponente");
 
     try {
         // Busca los datos del pokemon oponente en la API
-        var datos = await getPokemonData(nombre);
+        var datos = await getPokemonData(nombre, controladorActual.signal);
 
         // Guarda los datos en el estado
         estado.oponente = datos;
@@ -83,6 +82,7 @@ async function buscarOponente(nombre) {
 
     } catch (error) {
         // Si hay un error, lo mostra en pantalla
+        if (error.name === 'AbortError') return; // Si la petición fue abortada, no hacemos nada
         estado.oponente = null; //limpia el oponente
         renderError(error.message, "oponente");
         verificarBoton();
