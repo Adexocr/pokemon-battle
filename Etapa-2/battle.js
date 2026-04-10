@@ -203,23 +203,35 @@ export function jugadorDefinitivo(renderFunc, checkEndFunc) {
     estado.oponenteHP = 0;
     estado.definitiveUsed = true;
 
-    // Mensaje especial en el log
-    agregarLog('🌙 ¡' + TRAINER.definitiveMoveName + ' activado!');
-    agregarLog('✨ ' + TRAINER.definitiveMoveFlavor);
-    agregarLog('💫 ¡KO instantáneo! ' + TRAINER.winMessage);
+    // Mensaje especial en el log y animacion del definitivo
+    var luna = document.querySelector('#luna-definitivo');
+    var mensaje = document.querySelector('#mensaje-definitivo');
+    mensaje.textContent = TRAINER.definitiveMoveName;
+    luna.classList.add('activa');
+    mensaje.classList.add('activo');
+
 
     // Animación del definitivo
     var imgJugador  = document.querySelector('#jugador-imagen');
     var imgOponente = document.querySelector('#oponente-imagen');
-
     imgJugador.classList.add('definitivo-jugador');
+
     setTimeout(function() {
         imgOponente.classList.add('definitivo-oponente');
     }, 300);
 
     setTimeout(function() {
+        //se limpian las animaciones
         imgJugador.classList.remove('definitivo-jugador');
-        imgOponente.classList.remove('definitivo-oponente');
+
+        luna.classList.remove('activa');
+        mensaje.classList.remove('activo');
+
+        // mensaje en el log
+        agregarLog('🌙 ¡' + TRAINER.definitiveMoveName + ' usado!');
+        agregarLog('✨ ' + TRAINER.definitiveMoveFlavor);
+        agregarLog('💫 ¡KO instantáneo! ' + TRAINER.winMessage);
+
         checkEndFunc(estado);
         renderFunc(estado);
     }, 1000);

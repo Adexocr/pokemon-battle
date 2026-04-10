@@ -3,7 +3,6 @@
 import { 
     estado, 
     iniciarBatalla,
-    scheduleNextAttack,
     jugadorAtaca,
     jugadorDefinitivo,
     checkBattleEnd,
