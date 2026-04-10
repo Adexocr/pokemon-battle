@@ -403,10 +403,10 @@ main {
 
 /* ── MOONLIGHT REQUIEM ANIMACION ──────────────────── */
 @keyframes definitivoJugador {
-  0%   { transform: scaleX(-1) translateX(0)    brightness(1);   }
-  30%  { transform: scaleX(-1) translateX(30px) brightness(2);   }
-  60%  { transform: scaleX(-1) translateX(15px) brightness(1.5); }
-  100% { transform: scaleX(-1) translateX(0)    brightness(1);   }
+  0%   { transform: scaleX(-1) translateX(0);    filter: brightness(1); }
+  30%  { transform: scaleX(-1) translateX(30px); filter: brightness(3); }
+  60%  { transform: scaleX(-1) translateX(15px); filter: brightness(2); }
+  100% { transform: scaleX(-1) translateX(0);    filter: brightness(1); }
 }
 
 @keyframes definitivoOponente {
@@ -424,4 +424,47 @@ main {
 
 .definitivo-oponente {
   animation: definitivoOponente 1s ease-in-out forwards;
+}
+/* Luna que aparece durante el definitivo */
+#luna-definitivo {
+  position: fixed;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 6rem;
+  pointer-events: none;
+  z-index: 100;
+  display: none;
+}
+
+#luna-definitivo.activa {
+  display: block;
+  animation: lunaAppear 1.5s ease-in-out forwards;
+}
+
+#mensaje-definitivo {
+  position: fixed;
+  top: 38%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: monospace;
+  font-size: 1.1rem;
+  color: #a566e8;
+  text-align: center;
+  pointer-events: none;
+  z-index: 100;
+  display: none;
+  letter-spacing: 0.15em;
+}
+
+#mensaje-definitivo.activo {
+  display: block;
+  animation: lunaAppear 1.5s ease-in-out forwards;
+}
+
+@keyframes lunaAppear {
+  0%   { opacity: 0; transform: translateX(-50%) scale(0.5); }
+  40%  { opacity: 1; transform: translateX(-50%) scale(1.2); }
+  70%  { opacity: 1; transform: translateX(-50%) scale(1);   }
+  100% { opacity: 0; transform: translateX(-50%) scale(0.8); }
 }
