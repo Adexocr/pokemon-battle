@@ -5,7 +5,7 @@ var BASE_URL = "https://pokeapi.co/api/v2/pokemon/";
 
 //Funcion principal que recibe el id o nombre pokemon y trae el objeto con datos limpios
 
-export async function getPokemonData(nombre) {
+export async function getPokemonData(nombre, signal) {
 
 
     //fetch a la api, devuelve un objeto con toda la info del pokemon
