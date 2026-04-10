@@ -143,16 +143,17 @@ async function resolverAtaqueEnemigo(renderFunc, checkEndFunc) {
         var daño = calcularDañoOponente(estado.oponente.ataque);
         estado.jugadorHP = Math.max(0, estado.jugadorHP - daño);
         agregarLog('¡Has sido golpeado por el ataque enemigo! Daño recibido: ' + daño);
+             // Animación de golpe recibido
+        var imgJugador = document.querySelector('#jugador-imagen');
+        imgJugador.classList.add('jugador-golpeado');
+        setTimeout(function() {
+            imgJugador.classList.remove('jugador-golpeado');
+        }, 400);
     } else {
         agregarLog('¡Has esquivado el ataque enemigo!');
     }
 
-     // Animación de golpe recibido
-  var imgJugador = document.querySelector('#jugador-imagen');
-  imgJugador.classList.add('oponente-golpeado');
-  setTimeout(function() {
-    imgJugador.classList.remove('oponente-golpeado');
-  }, 400);
+
 
     //Se limpia el ataque entrante
     estado.incomingAttack = null;
@@ -196,16 +197,32 @@ export function jugadorAtaca(renderFunc, checkEndFunc, startCooldownFunc, index)
 
 // Movimiento definitivo
 export function jugadorDefinitivo(renderFunc, checkEndFunc) {
-    if (estado.definitiveUsed) return; 
+    if (estado.definitiveUsed) return;
     if (estado.phase !== 'fighting') return;
 
-    // Definitivo hace daño total al oponente
     estado.oponenteHP = 0;
     estado.definitiveUsed = true;
-    agregarLog('🌙 ¡' + TRAINER.definitiveMoveName + '! KO instantáneo.');
 
-    checkEndFunc(estado);
-    renderFunc(estado);
+    // Mensaje especial en el log
+    agregarLog('🌙 ¡' + TRAINER.definitiveMoveName + ' activado!');
+    agregarLog('✨ ' + TRAINER.definitiveMoveFlavor);
+    agregarLog('💫 ¡KO instantáneo! ' + TRAINER.winMessage);
+
+    // Animación del definitivo
+    var imgJugador  = document.querySelector('#jugador-imagen');
+    var imgOponente = document.querySelector('#oponente-imagen');
+
+    imgJugador.classList.add('definitivo-jugador');
+    setTimeout(function() {
+        imgOponente.classList.add('definitivo-oponente');
+    }, 300);
+
+    setTimeout(function() {
+        imgJugador.classList.remove('definitivo-jugador');
+        imgOponente.classList.remove('definitivo-oponente');
+        checkEndFunc(estado);
+        renderFunc(estado);
+    }, 1000);
 }
 
 // Verificar el fin de la batalla
