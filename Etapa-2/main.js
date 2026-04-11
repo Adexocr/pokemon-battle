@@ -96,6 +96,7 @@ document.querySelector('#movimientos-container').addEventListener('click', funct
     iniciarBatalla(render, function(estado) {
       checkBattleEnd(estado, render);
     });
+    renderInicial(estado);
   });
-renderInicial(estado);
+
 });
