@@ -86,6 +86,10 @@ document.querySelector('#movimientos-container').addEventListener('click', funct
     // Limpia los timers activos
     limpiarTimers();
 
+    // Limpia clases de animación que puedan haber quedado
+    document.querySelector('#oponente-imagen').classList.remove('definitivo-oponente');
+    document.querySelector('#jugador-imagen').classList.remove('definitivo-jugador');
+
     // Remueve el listener del teclado
     document.removeEventListener('keydown', onKeyDown);
 

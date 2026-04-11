@@ -223,6 +223,7 @@ export function jugadorDefinitivo(renderFunc, checkEndFunc) {
     setTimeout(function() {
         //se limpian las animaciones
         imgJugador.classList.remove('definitivo-jugador');
+        imgOponente.classList.remove('definitivo-oponente');
 
         luna.classList.remove('activa');
         mensaje.classList.remove('activo');
