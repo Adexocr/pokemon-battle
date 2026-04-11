@@ -156,6 +156,7 @@ document.querySelector("#btn-batalla").addEventListener("click", function() {
     var ultimoOponente = localStorage.getItem("ultimo-oponente");
     if (ultimoOponente) {
         inputOponente.value = ultimoOponente;
+        buscarOponente(ultimoOponente); 
     }
 
     // Carga Umbreon apenas se abre la pagina
