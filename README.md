@@ -1,7 +1,10 @@
 Este documento explica un poco lo que se logro durante la primera fase del proyecto Pokemon Battle.
 
 link de github pages: https://adexocr.github.io/pokemon-battle/
+
 link loom explicando proyecto: https://www.loom.com/share/f3073f3daa314ab4a6df7a0a3c5f91cf
+
+(El video se puede poner en 1.2x para verlo en menos tiempo e igual se entiende)
 
 El objetivo principal del proyecto es practicar conceptos fundamentales de JavaScript en la construccion de un prototipo de juego.
 
